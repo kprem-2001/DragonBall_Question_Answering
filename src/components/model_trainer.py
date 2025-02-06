@@ -9,7 +9,7 @@ from haystack.nodes import FARMReader
 from haystack.nodes import BM25Retriever
 from haystack.pipelines import ExtractiveQAPipeline
 
-from src.exception import CustomException
+from src.exceptions import CustomException
 from src.logger import logging
 from src.utils import save_object
 

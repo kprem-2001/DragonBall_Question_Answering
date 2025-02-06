@@ -2,7 +2,7 @@ import os
 import sys 
 from dataclasses import dataclass
 
-from src.exception import CustomException
+from src.exceptions import CustomException
 from src.logger import logging 
 from src.components.data_ingestion import DataIngestion
 from src.components.model_trainer import ModelTrainer
@@ -11,9 +11,7 @@ from src.components.model_trainer import ModelTrainer
 
 @dataclass
 class TrainPipelineConfig:
-    model_save_path: str = os.path.join('artifacts', 'trained_pipe')
-    generative_model_save_path: str = os.path.join('artifacts', 'generative_model')
-    generative_tokenizer_save_path: str = os.path.join('artifacts', 'generative_tokenizer')
+    model_save_path: str = os.path.join('artifacts', 'trained_pipe.pkl')
     raw_data_path: str = os.path.join('artifacts', 'raw_data')
     clean_data_path: str = os.path.join('artifacts', 'clean_data')
     

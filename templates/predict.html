@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Answering System</title>
+</head>
+<body>
+    <h1>Question Answering System</h1>
+
+    <!-- Form for inputting query -->
+    <form method="POST">
+        <label for="query">Enter your query:</label>
+        <input type="text" id="query" name="query" required><br><br>
+        
+        <!-- Retrieving checkbox -->
+        <label for="cCB1">Use Retriever Model:</label>
+        <input type="checkbox" id="cCB1" name="cCB1" checked><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <!-- Displaying the result -->
+    {% if completed %}
+        <hr>
+        {% if result %}
+            <h3>Results:</h3>
+            {% if result.ret %}
+                <h4>Retriever Model Output:</h4>
+                <p>{{ result.ret }}</p>
+            {% endif %}
+            {% if result.Error %}
+                <p>Error: {{ result.Error }}</p>
+            {% endif %}
+        {% else %}
+            <p>No results to display.</p>
+        {% endif %}
+        
+        <!-- Displaying time taken -->
+        <p><small>Time Taken: {{ time_taken | round(2) }}s</small></p>
+    {% endif %}
+
+    <!-- Display model status -->
+    <hr>
+    <h3>Model Status:</h3>
+    <p>Standard Model: 
+        {% if trained_stand %}
+            <span style="color: green;">Trained</span>
+        {% else %}
+            <span style="color: red;">Not Trained</span>
+        {% endif %}
+    </p>
+
+</body>
+</html>
